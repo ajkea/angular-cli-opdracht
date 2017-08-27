@@ -2,8 +2,16 @@
   apipagina works!
 </p>
 <h1>DIT IS DE API PAGINA</h1>
-<ul>
-  <li *ngFor="let kuns of kunst">
-    {{kuns.name}}
-  </li>
-</ul>
+<table class="table table-hover">
+  <thead class="thead-inverse">
+  <th>ID</th>
+  <th>Naam</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let kuns of kunst" >
+      <td>{{kuns.priref}}</td>
+      <td>{{kuns.name}}</td>
+      <td><a routerLink="/APIPagina/{{kuns.priref}}">edit</a></td>
+    </tr>
+  </tbody>
+</table>

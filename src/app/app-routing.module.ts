@@ -1,3 +1,5 @@
+import { KunstenaarsDetailComponent } from './pages/kunstenaars-detail/kunstenaars-detail.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -18,6 +20,14 @@ const routes: Routes = [
   {
     path: 'APIPagina',
     component: APIPaginaComponent
+  },
+  {
+    path: 'APIPagina/:priref',
+    component: KunstenaarsDetailComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ]
 

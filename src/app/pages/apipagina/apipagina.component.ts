@@ -8,15 +8,15 @@ import { Kunstenaar } from './../../domain/kunstenaar';
 })
 export class APIPaginaComponent implements OnInit {
 
-  kunstenaarsService: KunstenaarsService
-  constructor() { }
+  private kunstenaars: Kunstenaar[];
+
+  constructor(private kunstenaarsService: KunstenaarsService){}
 
   kunst = [];
   ngOnInit() {
     this.kunstenaarsService.getAllKunstenaars().subscribe(
     data =>{
       this.kunst = data.rubenianumpersonen;
-      console.log(this.kunst);
     })
   }
 }

@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-// autocomplete forms
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -13,17 +12,26 @@ import 'rxjs/add/operator/catch';
 export class KunstenaarsService implements InMemoryDbService {
 
   createDb() {
-    let Kunstenaars = this.getAllKunstenaars();
-    return { Kunstenaars };
+    let heroes = [
+        { id: '1', name: 'Windstorm' },
+        { id: '2', name: 'Bombasto' },
+        { id: '3', name: 'Magneta' },
+        { id: '4', name: 'Tornado' }
+    ];
+return { heroes };
 }
 
   constructor(private http: Http) { }
  
-  getAllKunstenaars() {
-    return this.http.get(environment.kunstenaarDataSource).map((response: Response) => response.json())
+    getAllKunstenaars() {
+    return this.http.get(environment.kunstenaarDataSource)
         .map(this.handleRequest)
         .catch(this.handleError);
-  }
+    }
+
+    getKunstenaar(priref: number) {    
+    return this.http.get(environment.kunstenaarDataSource, JSON.stringify(priref))
+    }
 
   private handleRequest(res: Response) {
     let body = res.json();
