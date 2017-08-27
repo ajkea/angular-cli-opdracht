@@ -2,12 +2,9 @@
 <h1 class="display-6">Welkom op de API pagina,</h1>
 <p>deze haalt data op over kunstenaars voorzien door de stad Antwerpen. Dit is via <a href="opendata.antwerpen.be">opendata.antwerpen.be</a></p>
 
-<div class="jumbotron" *ngIf="selectedKunstenaar">
 
-  <!-- <input [(ngModel)]="selectedKunstenaar.name" placeholder="{{selectedKunstenaar.name}}" type="text" class="form-control" id="name" required> -->
-  
-  <form (ngSubmit)="onSubmit()" #kunstenaarForm="ngForm">
-  
+<div *ngIf="selectedKunstenaar">
+   <form *ngIf="!submitted" class="jumbotron" (ngSubmit)="onSubmit()" #kunstenaarForm="ngForm">
       <input [(ngModel)]="selectedKunstenaar.name" placeholder="{{selectedKunstenaar.name}}" type="text" class="form-control" name="kunstenaarName" required>
       <input type="text" class="form-control" id="priref" required [(ngModel)]="selectedKunstenaar.priref" name="kunstenaarPriref" >
       <button type="submit" class="btn btn-success" [disabled]="!kunstenaarForm.form.valid">Submit</button>

@@ -34,5 +34,18 @@ export class APIPaginaComponent implements OnInit {
 
   onSelect(kunstenaar: Kunstenaar): void{
     this.selectedKunstenaar = kunstenaar;
+    this.submitted = false;
+    
   }
+
+  add(name: string): void{
+    name = name.trim();
+    if (!name) { return; }
+    this.kunstenaarsService.create(name)
+      .then(hero => {
+        this.kunst.push(hero);
+        this.selectedKunstenaar = null;
+      });
+  }
+
 }

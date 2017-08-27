@@ -31,6 +31,7 @@ import { LoadingComponent } from './pages/loading/loading.component';
     AppRoutingModule,
     HttpModule,
     FormsModule
+    // ,InMemoryWebApiModule.forRoot(KunstenaarsService)
   ],
   providers: [KunstenaarsService],
   bootstrap: [AppComponent]

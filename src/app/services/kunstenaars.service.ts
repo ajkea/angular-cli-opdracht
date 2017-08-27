@@ -1,3 +1,4 @@
+import { Kunstenaar } from './../domain/kunstenaar';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
