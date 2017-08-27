@@ -29,8 +29,8 @@ return { heroes };
         .catch(this.handleError);
     }
 
-    getKunstenaar(priref: number) {    
-    return this.http.get(environment.kunstenaarDataSource, JSON.stringify(priref))
+    getKunstenaar(priref: number){    
+    return this.getAllKunstenaars()
     }
 
   private handleRequest(res: Response) {

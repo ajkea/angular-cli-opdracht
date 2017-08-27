@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { FormComponent } from './pages/form/form.component';
 import { APIPaginaComponent } from './pages/apipagina/apipagina.component';
+import { LoadingComponent } from './pages/loading/loading.component';
+
 
 const routes: Routes = [
   {
@@ -24,6 +26,10 @@ const routes: Routes = [
   {
     path: 'APIPagina/:priref',
     component: KunstenaarsDetailComponent
+  },
+  {
+    path: 'loading',
+    component: LoadingComponent
   },
   {
     path: '**',

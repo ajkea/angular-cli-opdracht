@@ -1,17 +1,32 @@
-<p>
-  apipagina works!
-</p>
-<h1>DIT IS DE API PAGINA</h1>
-<table class="table table-hover">
+<img src="https://i.imgur.com/wVpIicX.jpg" class="img-fluid" alt="hero-image">
+<h1 class="display-6">Welkom op de API pagina,</h1>
+<p>deze haalt data op over kunstenaars voorzien door de stad Antwerpen. Dit is via <a href="opendata.antwerpen.be">opendata.antwerpen.be</a></p>
+
+<div class="jumbotron" *ngIf="selectedKunstenaar">
+
+  <!-- <input [(ngModel)]="selectedKunstenaar.name" placeholder="{{selectedKunstenaar.name}}" type="text" class="form-control" id="name" required> -->
+  
+  <form (ngSubmit)="onSubmit()" #kunstenaarForm="ngForm">
+  
+      <input [(ngModel)]="selectedKunstenaar.name" placeholder="{{selectedKunstenaar.name}}" type="text" class="form-control" name="kunstenaarName" required>
+      <input type="text" class="form-control" id="priref" required [(ngModel)]="selectedKunstenaar.priref" name="kunstenaarPriref" >
+      <button type="submit" class="btn btn-success" [disabled]="!kunstenaarForm.form.valid">Submit</button>
+  </form>
+</div>
+
+<!-- loader indien niet geladen -->
+<div *ngIf="!loaded" class="loader"></div>
+
+<!-- start tabel opendata -->
+<table *ngIf="loaded" class="table table-hover">
   <thead class="thead-inverse">
   <th>ID</th>
   <th>Naam</th>
   </thead>
   <tbody>
-    <tr *ngFor="let kuns of kunst" >
+    <tr *ngFor="let kuns of kunst" (click)="onSelect(kuns)">
       <td>{{kuns.priref}}</td>
       <td>{{kuns.name}}</td>
-      <td><a routerLink="/APIPagina/{{kuns.priref}}">edit</a></td>
     </tr>
   </tbody>
 </table>

@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router'
+
+import { Location } from '@angular/common'
+
 import { KunstenaarsService } from './../../services/kunstenaars.service';
 import { Kunstenaar } from './../../domain/kunstenaar';
+
+import 'rxjs/add/operator/switchMap';
+
 @Component({
   selector: 'app-kunstenaars-detail',
   templateUrl: './kunstenaars-detail.component.html',
@@ -8,9 +15,17 @@ import { Kunstenaar } from './../../domain/kunstenaar';
 })
 export class KunstenaarsDetailComponent implements OnInit {
 
-  constructor() { }
+  @Input() kunstenaar: Kunstenaar;
 
-  ngOnInit() {
+  ngOnInit(): void{
+    // this.route.paramMap
+    // .switchMap((params:ParamMap) => this.kunstenaarService.getAllKunstenaars(+params.get('priref')))
+    // .subscribe(kunstenaar => this.kunstenaar = kunstenaar);
   }
 
+  constructor(
+    private kunstenaarService: KunstenaarsService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
 }
